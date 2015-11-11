@@ -96,7 +96,7 @@ with open("chicago_green_roof.txt", 'r') as IN:
 		green_roofs[zip_code]+=1
 
 #write data to output file:
-OUT=open("vegetation_by_building_type.txt","w")
+OUT=open("garden_roof_per_zip.txt","w")
 all_zip_codes=set(gardens.keys()+green_roofs.keys())
 for zip_code in list(all_zip_codes):
 	if zip_code in green_roofs.keys():
@@ -113,7 +113,7 @@ OUT.close()
 #generate plot2 scatterplot with R:
 robjects.r("""
 	library(ggplot2)
-	d2<-read.table("vegetation_by_building_type.txt")
+	d2<-read.table("garden_roof_per_zip.txt")
 	colnames(d2)<-c("zip_code","gardens", "green_roofs") #add column names
 
 	#spearman correlation
